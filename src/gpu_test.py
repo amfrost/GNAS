@@ -12,6 +12,7 @@ def test_device(device, shape):
         device_name = "/gpu:0"
     else:
         device_name = "/cpu:0"
+
     with tf.device(device_name):
         startTime = datetime.now()
         random_matrix = tf.random.uniform(shape=shape, minval=0, maxval=1)

@@ -7,6 +7,7 @@ from datetime import datetime
 
 device_name = sys.argv[1]  # Choose device from cmd line. Options: gpu or cpu
 shape = (int(sys.argv[2]), int(sys.argv[2]))
+
 if device_name == "gpu":
     device_name = "/gpu:0"
 else:
