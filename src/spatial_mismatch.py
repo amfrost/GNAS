@@ -54,6 +54,15 @@ def build_model():
     print(f'x7 shape = {x7.shape}')
     x8 = conv3(x7)
     print(f'x8 shape = {x8.shape}')
+    depthwise = tf.keras.layers.DepthwiseConv2D(kernel_size=(3, 3), padding='same', depth_multiplier=2)
+    x9 = depthwise(x6)
+    print(f'x9 shape = {x9.shape}')
+    pointconv = tf.keras.layers.Conv2D(filters=12, kernel_size=(1, 1), strides=(1, 1), padding='same')
+    x10 = pointconv(x9)
+    print(f'x10 shape = {x10.shape}')
+    separable = tf.keras.layers.SeparableConv2D(kernel_size=(3, 3), padding='same', depth_multiplier=2, filters=12)
+    x11 = separable(x6)
+    print(f'x11 shape = {x11.shape}')
     print('test')
 
 if __name__ == '__main__':
