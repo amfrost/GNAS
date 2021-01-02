@@ -11,3 +11,11 @@ RUN apt-get update -y
 RUN apt-get update -y && apt update -y && apt install -y graphviz graphviz-dev
 #RUN pip install pygraphviz
 RUN pip3 install pygraphviz pydot
+#RUN pip3 install -Uq apache_beam
+#RUN pip3 install -q tensorflow-transform
+
+COPY cache_data.py cache_data.py
+
+RUN python cache_data.py
+
+CMD ['bash']
