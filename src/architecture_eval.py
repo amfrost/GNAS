@@ -9,8 +9,8 @@ import math
 from math import cos, pi, pow, e
 import time
 from time import process_time, perf_counter
-import more_newerer_macro_graph as mg
-import static_gnn_controller as ctrl
+import macro_graph as mg
+import controller_gnn as ctrl
 import pickle
 import matplotlib.pyplot as plt
 import pandas as pd

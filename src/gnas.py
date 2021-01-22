@@ -7,8 +7,8 @@ from tensorflow import compat as c
 import tensorflow as tf
 import numpy as np
 # import static_gnn_controller as ctrl
-import static_nognn_controller as ctrl
-import more_newerer_macro_graph as mg
+import controller_standard as ctrl
+import macro_graph as mg
 import gnas_data as gdata
 import gnas_utils as gutil
 import pickle
