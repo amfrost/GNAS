@@ -171,6 +171,8 @@ class GNAS(object):
 
 if __name__ == '__main__':
     # output_depths = [16, 16, 32, 32, 64, 128, 256, 512]
-    output_depths = [16, 16, 16, 32, 32, 64, 64, 128, 128, 256, 256, 512]
+    # output_depths = [16, 16, 16, 32, 32, 64, 64, 128, 128, 256, 256, 512]
+    # output_depths = [8, 16, 32, 64, 128, 256]
+    output_depths = [36] * 12
     gnas = GNAS(dataset='cifar10', output_depths=output_depths)
     gnas.execute_gnas(1000)
