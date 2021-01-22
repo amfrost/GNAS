@@ -6,8 +6,13 @@ from tensorflow.keras.metrics import SparseCategoricalAccuracy
 from tensorflow import compat as c
 import tensorflow as tf
 import numpy as np
-# import static_gnn_controller as ctrl
-import controller_standard as ctrl
+###########################################################################
+#################### choose controller version here #######################
+###########################################################################
+import controller_gnn as ctrl
+# import controller_standard as ctrl
+###########################################################################
+###########################################################################
 import macro_graph as mg
 import gnas_data as gdata
 import gnas_utils as gutil
@@ -573,7 +578,7 @@ if __name__ == '__main__':
     # output_depths = [16, 16, 32, 32, 64, 64]
 
     params = {
-        'output_dir': '../output/47-nognn/',
+        'output_dir': '../output/48-gnn/',
         'testing': False,
         'log_save_path': 'log.pkl',
         'dataset': 'cifar10',
