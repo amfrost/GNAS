@@ -1,29 +1,18 @@
-# README #
+## L46 Project - Graph structured Neural Architecture Search (GNAS)
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Environment
 
-### What is this repository for? ###
+* Just use the build file in the /docker directory
+* Requires cuda 10.1, cudnn7 nvidia docker driver
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Execution
 
-### How do I get set up? ###
+* Edit parameters in /src/gnas.py as desired
+* Select whether to use gnn or standard controller by changing import statement at top of gnas.py
+* Run main method in gnas.py
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Project documentation
 
-### Contribution guidelines ###
+See the project [roadmap](https://amf85.atlassian.net/jira/software/c/projects/L46/boards/6/roadmap) for breakdown of work completed
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
