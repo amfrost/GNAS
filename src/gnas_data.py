@@ -18,15 +18,17 @@ def get_dataset(dataset='mnist'):
         xtest = xtest[:, :, :, np.newaxis]
     elif dataset == 'cifar10':
         (xtrain, ytrain), (xtest, ytest) = tf.keras.datasets.cifar10.load_data()
+        ytrain = ytrain[:, 0]
+        ytest = ytest[:, 0]
     else:
         raise NotImplementedError("Dataset must be in ['mnist', 'fashion_mnist', 'cifar10'].")
 
     return (xtrain, ytrain), (xtest, ytest)
 
 
-def normalise_xdata(xtrain, xtest=None):
-    mu = np.mean(xtrain)
-    sigma = np.std(xtrain)
+def standardise_xdata(xtrain, xtest=None):
+    mu = np.mean(xtrain, axis=(0, 1, 2), keepdims=True)
+    sigma = np.std(xtrain, axis=(0, 1, 2), keepdims=True)
     xtrain = (xtrain - mu) / sigma
     if xtest is not None:
         xtest = (xtest - mu) / sigma
@@ -50,8 +52,12 @@ def batch_xy(x, y, batch_size=128, drop_remainder=True, shuffle_batches=True, se
 
     n_batches = len(x) // batch_size
     remainder = len(x) % batch_size
-    x_batches = np.split(x[:-remainder], n_batches, axis=0)
-    y_batches = np.split(y[:-remainder], n_batches)
+    if remainder > 0:
+        x_batches = np.split(x[:-remainder], n_batches, axis=0)
+        y_batches = np.split(y[:-remainder], n_batches)
+    else:
+        x_batches = np.split(x, n_batches, axis=0)
+        y_batches = np.split(y, n_batches)
 
     if shuffle_batches:
         np.random.RandomState(seed).shuffle(x_batches)
@@ -66,7 +72,7 @@ def prepare_data(dataset='mnist', batch_size=128, shuffle=True, seed=None, drop_
         seed = np.random.randint(10000)
 
     (xtrain, ytrain), (xtest, ytest) = get_dataset(dataset)
-    xtrain, xtest = normalise_xdata(xtrain, xtest)
+    xtrain, xtest = standardise_xdata(xtrain, xtest)
     if shuffle:
         xtrain, ytrain = shuffle_xy(xtrain, ytrain, seed=seed)
         xtest, ytest = shuffle_xy(xtest, ytest, seed=seed)
