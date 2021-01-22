@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 # import static_gnn_gnas as gnas
-from static_gnn_gnas import GNAS
+from gnas import GNAS
 
 
 class RunAnalysis(object):
